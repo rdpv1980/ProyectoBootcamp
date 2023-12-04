@@ -1,0 +1,49 @@
+openapi: 3.0.1
+info:
+  title: Cliente
+  description: Objeto cliente
+  version: 1.0.0
+servers:
+- url: https://localhost:8081
+tags:
+- name: Cliente
+  description: Agrupamiento del Controller Cliente
+paths:
+  /cliente:
+    get:
+      tags:
+      - Cliente
+      summary: Permite obtener los clientes
+      description: |
+        Retorna los clientes
+        
+      operationId: obtener
+      responses:
+        "200":
+          description: Se obtuvo los datos del cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/clienteResponse'
+components:
+  schemas:
+    clienteResponse:
+      title: clienteResponse      
+      properties:
+        idCliente:
+          type: integer
+          example: 01
+        tipoCliente:
+          type: string
+          example: "personal"
+        tipoDocumento:
+          type: string
+          example: "DNI"
+        numeroDocumento:
+          type: string
+          example: 48494999
+      required:
+       - idCliente
+       - tipoCliente
+       - tipoDocumento
+       - numeroDocumento

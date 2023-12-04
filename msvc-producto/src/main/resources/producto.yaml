@@ -1,0 +1,41 @@
+openapi: 3.0.1
+info:
+  title: Producto
+  description: Objeto producto
+  version: 1.0.0
+servers:
+- url: https://localhost:8082
+tags:
+- name: Producto
+  description: Agrupamiento del Controller Producto
+paths:
+  /producto:
+    get:
+      tags:
+      - Producto
+      summary: Permite obtener los productos
+      description: |
+        Retorna los productos
+        
+      operationId: obtener
+      responses:
+        "200":
+          description: Se obtuvo los datos del producto
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productoResponse'
+components:
+  schemas:
+    productoResponse:
+      title: productoResponse
+      properties:
+        idProducto:
+          type: integer
+          example: 01
+        tipoProducto:
+          type: string
+          example: "cuenta bancaria"
+      required:
+       - idProducto
+       - tipoProducto

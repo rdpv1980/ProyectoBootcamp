@@ -1,0 +1,49 @@
+openapi: 3.0.1
+info:
+  title: Cuenta
+  description: Objeto cuenta
+  version: 1.0.0
+servers:
+- url: https://localhost:8083
+tags:
+- name: Cuenta
+  description: Agrupamiento del Controller Cuenta
+paths:
+  /cuenta:
+    get:
+      tags:
+      - Cuenta
+      summary: Permite obtener las cuentas
+      description: |
+        Retorna las cuentas
+        
+      operationId: obtener
+      responses:
+        "200":
+          description: Se obtuvo los datos de la cuenta
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cuentaResponse'
+components:
+  schemas:
+    cuentaResponse:
+      title: cuentaResponse
+      properties:
+        idCuenta:
+          type: integer
+          example: 01
+        tipoCuenta:
+          type: string
+          example: "ahorro"
+        descripcionCuenta:
+          type: string
+          example: "cuenta de ahorro"
+        saldo:
+          type: integer
+          example: 100
+      required:
+       - idCuenta
+       - tipoCuenta
+       - descripcionCuenta
+       - saldo
